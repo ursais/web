@@ -10,10 +10,8 @@ class ResUsers(models.Model):
     _name = 'res.users'
     _inherit = ['res.users', 'mail.thread']
 
-    digital_signature = fields.Binary(
-        string='Signature',
-        oldname="signature_image",
-    )
+    digital_signature = fields.Binary(string='Digital Signature',
+                                      oldname="signature_image")
 
     @api.model
     def create(self, vals):
