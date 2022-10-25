@@ -73,7 +73,7 @@ odoo.define('web_export_view', function (require) {
             if (children) {
                 // Find only rows with data
                 view.$el.find('.o_list_view > tbody > tr.o_data_row:' +
-                    'has(.o_list_record_selector input:checkbox:checked)')
+                    'has(.o_list_record_selector input[type=checkbox]:checked)')
                     .each(function () {
                         var $row = $(this);
                         var export_row = [];
@@ -88,7 +88,14 @@ odoo.define('web_export_view', function (require) {
                                         ? _t("True") : _t("False")
                                 );
                             } else {
-                                var text = $cell.text().trim();
+                                var is_m2m = $cell.hasClass('o_many2many_tags_cell');
+                                if (is_m2m) {
+                                    var tags = $cell.find('span.o_badge_text');
+                                    var tags_text_list = tags.map((i, el) => el.innerText.trim()).get();
+                                    var text = tags_text_list.join('\n');
+                                } else {
+                                    var text = $cell.text().trim();
+                                }
                                 var is_number =
                                     $cell.hasClass('o_list_number') &&
                                     !$cell.hasClass('o_float_time_cell');

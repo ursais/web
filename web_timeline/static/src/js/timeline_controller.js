@@ -16,6 +16,7 @@ odoo.define('web_timeline.TimelineController', function (require) {
             onRemove: '_onRemove',
             onMove: '_onMove',
             onAdd: '_onAdd',
+            onDuplicate: '_onDuplicate'
         }),
 
         /**
@@ -131,6 +132,25 @@ odoo.define('web_timeline.TimelineController', function (require) {
                     model: this.model.modelName,
                 });
             }
+        },
+
+        /**
+         * Gets triggered when a timeline item is duplicated (triggered by the TimelineRenderer).
+         *
+         * @private
+         */
+        _onDuplicate: function (event) {
+            var self = this;
+            return this._rpc({
+                model: this.model.modelName,
+                method: 'copy',
+                args: [event.data.id],
+                context: this.getSession().user_context,
+            })
+            .then(function (res_id) {
+                self.create_completed([res_id]);
+                event.data.callback();
+            });
         },
 
         /**
@@ -268,12 +288,12 @@ odoo.define('web_timeline.TimelineController', function (require) {
                 default_context['default_'.concat(this.date_delay)] = 1;
             }
             if (this.date_start) {
-                default_context['default_'.concat(this.date_start)] = moment(item.start).add(1, 'hours').format(
+                default_context['default_'.concat(this.date_start)] = moment.utc(item.start).format(
                     'YYYY-MM-DD HH:mm:ss'
                 );
             }
             if (this.date_stop && item.end) {
-                default_context['default_'.concat(this.date_stop)] = moment(item.end).add(1, 'hours').format(
+                default_context['default_'.concat(this.date_stop)] = moment.utc(item.end).format(
                     'YYYY-MM-DD HH:mm:ss'
                 );
             }
