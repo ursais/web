@@ -27,7 +27,8 @@ patch(Many2XAutocomplete.prototype, {
         // Add options limit used to change number of selections record
         // returned.
         console.log("this.ir_options: ",this.ir_options);
-        if (!this.ir_options["web_m2x_options.limit"] == "undefined") {
+	if ("web_m2x_options.limit" in this.ir_options && this.ir_options["web_m2x_options.limit"] !== undefined) {
+        //if (!this.ir_options["web_m2x_options.limit"] == "undefined") {
             this.props.searchLimit = parseInt(
                 this.ir_options["web_m2x_options.limit"],
                 10
@@ -143,16 +144,17 @@ patch(Many2XAutocomplete.prototype, {
         // 3- if not set locally, check if it's set globally via ir.config_parameter
         // 4- if set globally, apply its value
         // 5- if not set globally either, check if returned values are more than node's limit
-        var search_more = false;
-        if (this.props.nodeOptions.search_more !== "undefined") {
+        var search_more = true;
+
+        if (typeof this.props.nodeOptions.search_more === "boolean") {
             search_more = is_option_set(this.props.nodeOptions.search_more);
-        } else if (this.ir_options["web_m2x_options.search_more"] !== "undefined") {
+        } else if (this.ir_options["web_m2x_options.search_more"] === "false") {
             search_more = is_option_set(this.ir_options["web_m2x_options.search_more"]);
-        } else {
-            search_more =
-                !this.props.noSearchMore && this.props.searchLimit < records.length;
-        }
-        if (search_more) {
+	} else {
+	    search_more = true
+	}
+
+	if (!this.props.noSearchMore  && search_more && records.length > 0) {
             options.push({
                 label: _t("Search More..."),
                 action: this.onSearchMore.bind(this, request),
