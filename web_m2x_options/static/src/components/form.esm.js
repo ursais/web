@@ -11,7 +11,6 @@ import {FormViewDialog} from "@web/views/view_dialogs/form_view_dialog";
 import {Many2OneAvatarField} from "@web/views/fields/many2one_avatar/many2one_avatar_field";
 import {Many2OneBarcodeField} from "@web/views/fields/many2one_barcode/many2one_barcode_field";
 import {Many2OneField, many2OneField} from "@web/views/fields/many2one/many2one_field";
-import {PartnerMany2XAutocomplete} from "@partner_autocomplete/js/partner_autocomplete_many2one";
 import {ReferenceField} from "@web/views/fields/reference/reference_field";
 import {X2ManyField} from "@web/views/fields/x2many/x2many_field";
 import {Many2OneAvatarUserField} from "@mail/views/web/fields/many2one_avatar_user_field/many2one_avatar_user_field";
@@ -168,19 +167,6 @@ CreateConfirmationDialog.template =
 /**
  *  Many2OneField
  **/
-
-patch(PartnerMany2XAutocomplete.prototype, {
-    setup() {
-        super.setup(...arguments);
-    },
-});
-PartnerMany2XAutocomplete.props = {
-    ...PartnerMany2XAutocomplete.props,
-    canCreate: {type: Boolean, optional: true},
-    canWrite: {type: Boolean, optional: true},
-    nodeOptions: {type: Object, optional: true},
-    searchMore: {type: Object, optional: true},
-};
 
 patch(Many2XAutocomplete.prototype, {
     setup() {
