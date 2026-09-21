@@ -1,2 +1,2 @@
 id,name,model_id,group_id/id,operation,domain
-crud_ir_actions_act_window_message,access_ir_actions_act_window_message,model_ir_actions_act_window_message,base.group_system,crud,
+crud_ir_actions_act_window_message,access_ir_actions_act_window_message,ir.actions.act.window.message,base.group_system,crud,
