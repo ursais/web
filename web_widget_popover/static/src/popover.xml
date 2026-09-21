@@ -3,16 +3,16 @@
 
     <t t-name="web_widget_popover.IconPopoverField">
         <span
-            t-if="value"
-            t-attf-class="fa {{props.icon}}"
-            t-att-data-tooltip-info='tooltipInfo'
+            t-if="this.value"
+            t-attf-class="fa {{this.props.icon}}"
+            t-att-data-tooltip-info='this.tooltipInfo'
             data-tooltip-template="web_widget_popover.PopoverTemplate"
         />
     </t>
 
     <t t-name="web_widget_popover.PopoverTemplate">
         <div class="o-tooltip px-1 py-2">
-            <span style="white-space: pre-wrap;" t-esc="message" />
+            <span style="white-space: pre-wrap;" t-out="this.message" />
         </div>
     </t>
 

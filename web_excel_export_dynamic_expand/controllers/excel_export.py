@@ -19,11 +19,11 @@ class CustomGroupsTreeNode(ExcelExport):
 
     @property
     def context(self):
-        return self._context
+        return self.env.context
 
     @context.setter
     def context(self, value):
-        self._context = value
+        self.env.context = value
 
     def from_group_data(self, fields, columns_headers, groups):
         collapse_groups = self.context.get("collapse_groups")

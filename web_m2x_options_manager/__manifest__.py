@@ -6,21 +6,19 @@
     "summary": 'Adds an interface to manage the "Create" and'
     ' "Create and Edit" options for specific models and'
     " fields.",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "author": "Camptocamp, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Web",
     "data": [
-        "security/ir.model.access.csv",
+        "security/ir.access.csv",
         "views/ir_model.xml",
-        "views/m2x_create_edit_option.xml",
-    ],
+        "views/m2x_create_edit_option.xml"],
     "depends": [
         # OCA/server-tools
         "base_view_inheritance_extension",
         # OCA/web
-        "web_m2x_options",
-    ],
+        "web_m2x_options"],
     "website": "https://github.com/OCA/web",
     "installable": True,
     "pre_init_hook": "pre_init_hook",

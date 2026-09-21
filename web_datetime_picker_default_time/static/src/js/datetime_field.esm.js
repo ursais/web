@@ -1,9 +1,9 @@
 /* Copyright 2024 Camptocamp
  * License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl) */
 
-import {useRef} from "@odoo/owl";
 import {localization} from "@web/core/l10n/localization";
 import {patch} from "@web/core/utils/patch";
+import { useRef } from "@web/owl2/utils";
 import {
     DateTimeField,
     dateRangeField,

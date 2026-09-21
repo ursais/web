@@ -35,7 +35,7 @@
         />
         <field
             name="image"
-            type="base64"
+            type="bytes"
             file="web_quick_start_screen/static/description/icon.png"
         />
     </record>

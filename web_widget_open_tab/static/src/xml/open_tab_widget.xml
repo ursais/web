@@ -3,10 +3,10 @@
     <t t-name="web_widget_open_tab.openTab">
         <a
             class="btn open_tab_widget fa fa-external-link"
-            t-att-href="_getReference()"
+            t-att-href="this._getReference()"
             target="_blank"
-            t-on-click="openNewTab"
-            t-att-title="props.title"
+            t-on-click="this.openNewTab"
+            t-att-title="this.props.title"
         />
     </t>
 </template>

@@ -2,7 +2,7 @@ import {ControlPanel} from "@web/search/control_panel/control_panel";
 import {FilterButton} from "../filter_button/filter_button.esm";
 import {browser} from "@web/core/browser/browser";
 import {patch} from "@web/core/utils/patch";
-import {useState} from "@odoo/owl";
+import { proxy } from "@odoo/owl";
 import {user} from "@web/core/user";
 
 patch(ControlPanel, {
@@ -13,7 +13,7 @@ patch(ControlPanel.prototype, {
     setup() {
         super.setup(...arguments);
         this.buttonFiltersVisibilityKey = `visibleHeaderButtons${this.env.config.actionId}+${user.userId}`;
-        this.state = useState({
+        this.state = proxy({
             ...this.state,
             headerButtonFilters: this.env.searchModel?.headerButtonFilters,
             showButtonFilters:

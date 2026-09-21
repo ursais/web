@@ -5,9 +5,9 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-    "name": "Clickable many2one fields for tree views",
+    "name": "Clickable many2one fields for list views",
     "summary": "Open the linked resource when clicking on their name",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "category": "Hidden",
     "website": "https://github.com/OCA/web",
     "author": "Therp BV, "

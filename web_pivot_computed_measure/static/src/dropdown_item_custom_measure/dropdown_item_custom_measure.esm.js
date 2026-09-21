@@ -1,14 +1,14 @@
 /* Copyright 2022 Tecnativa - Carlos Roca
  * License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html) */
 
-import {Component, useState} from "@odoo/owl";
+import { Component, proxy } from "@odoo/owl";
 
 /**
  * @extends Component
  */
 export class DropdownItemCustomMeasure extends Component {
     setup() {
-        this.isOpen = useState({value: false});
+        this.isOpen = proxy({value: false});
     }
 
     onClickComputedMeasure() {

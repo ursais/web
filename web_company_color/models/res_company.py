@@ -257,4 +257,4 @@ class ResCompany(models.Model):
                 custom_attachment.sudo().write(values)
             else:
                 IrAttachmentObj.sudo().create(values)
-        self.env.registry.clear_cache()
+        self.env.transaction.invalidate_ormcache()

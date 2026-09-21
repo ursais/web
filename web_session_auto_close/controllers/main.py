@@ -6,7 +6,7 @@ from odoo.http import request
 
 
 class WebSessionAutoCloseController(http.Controller):
-    @http.route("/web/session/get_timeout", type="json", auth="user")
+    @http.route("/web/session/get_timeout", type="jsonrpc", auth="user")
     def get_session_timeout(self):
         timeout_sec = (
             request.env["ir.config_parameter"]

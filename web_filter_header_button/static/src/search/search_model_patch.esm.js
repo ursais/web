@@ -1,13 +1,13 @@
 import {makeContext} from "@web/core/context";
 import {patch} from "@web/core/utils/patch";
+import { useLayoutEffect } from "@web/owl2/utils";
 import {SearchModel} from "@web/search/search_model";
-import {useEffect} from "@odoo/owl";
 
 patch(SearchModel.prototype, {
     setup() {
         super.setup(...arguments);
         // Filter flagged filters to be shown in the control panel.
-        useEffect(
+        useLayoutEffect(
             () => {
                 this.headerButtonFilters = this.getHeaderButtonFilters();
             },

@@ -113,7 +113,7 @@ class M2xCreateEditOption(models.Model):
             - ``m2x.create.edit.option._get_id()``
             - ``ir.ui.view._get_view_cache()``
         """
-        self.env.registry.clear_cache(*self._clear_caches_get_names(*cache_names))
+        self.env.transaction.invalidate_ormcache(*self._clear_caches_get_names(*cache_names))
 
     def _clear_caches_get_names(self, *cache_names) -> list[str]:
         """Retrieves registry caches names for clearance
